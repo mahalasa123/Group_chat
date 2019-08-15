@@ -1,0 +1,52 @@
+.header {
+  text-align: center;
+}
+
+.chatContainer {
+  border: 3px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 15px auto;
+  max-width:700px;
+  position: relative;
+}
+
+.chatContainer::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.chatContainer img {
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.chatContainer .tooltiptext {
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  right: 0px;
+}
+
+.chatContainer:hover .tooltiptext {
+  visibility: visible;
+}
+
+.name {
+  color: #0846d2;
+}
+.timeStamp {
+  float: right;
+  color: #999;
+}
