@@ -4,7 +4,7 @@ export function getChatLog() {
   
   return getMessages().then(function(messages) {
     return getMembers().then(function(members) {
-      // Traverse through members array & modify it to match the requirement
+      // Traverse through members array & modify it to match the requirement 
       members.map((item) => {
         item.fullName = item.firstName + ' ' + item.lastName;
         item.userId = item.id;
