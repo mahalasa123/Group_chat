@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { getChatLog } from './service';
+import Header from "./components/header";
 
 class App extends Component {
 
@@ -30,7 +31,7 @@ class App extends Component {
 
     return (
       <div>
-        <h1 className="header"> Group chat</h1>
+        <Header/>
         {
           this.state.data.map((item) => {
             return (

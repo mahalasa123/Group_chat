@@ -1,31 +1,30 @@
-import getChatLog from './service';
+import React from 'react';
+import { configure, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import { getMessages, getMembers } from './data';
+import { getChatLog } from './service';
 
-// This is just a sample test to show you the desired format and fields, feel free to delete it.
+configure({adapter: new Adapter()});
 
-// it('returns the correct format', () => {
-//  return getChatLog().then(([firstMessage]) => {
-//     expect(typeof firstMessage.messageId).toBe('string');
-//     expect(typeof firstMessage.userId).toBe('string');
-//     expect(typeof firstMessage.fullName).toBe('string');
-//     expect(typeof firstMessage.timestamp).toBe('string');
-//     expect(typeof firstMessage.email).toBe('string');
-//     expect(typeof firstMessage.message).toBe('string');
-//     expect(firstMessage.avatar === null || typeof firstMessage === 'string').toBeTruthy();
-//   });
-// });
+describe('getChatLog() array using API Promise', () => {
+  it('should load the group chat data from two API calls', () => {
+      return getMessages().then(data1 => {
+        expect(data1).toBeDefined();
+        return getMembers().then(data2 => {
+          expect(data2).toBeDefined();
+        })
+    })
 
-let user = [
-  {
-    "messageId": "12356",
-    "userId": "613651251",
-    "fullName": "Robin Balmforth",
-    "timestamp": "2017-02-23T14:57:20.629Z",
-    "email": "robin@example.com",
-    "message": "Hello, World!",
-    "avatar": null
-  }
-]
-
-it('returns the correct format', () => {
-  return getChatLog().then(data => expect(data).toEqual('Mark'));
+  it('returns the correct format', () => {
+  return getChatLog().then(([firstMessage]) => {
+      expect(typeof firstMessage.messageId).toBe('string');
+      expect(typeof firstMessage.userId).toBe('string');
+      expect(typeof firstMessage.fullName).toBe('string');
+      expect(typeof firstMessage.timestamp).toBe('string');
+      expect(typeof firstMessage.email).toBe('string');
+      expect(typeof firstMessage.message).toBe('string');
+      expect(firstMessage.avatar === null || typeof firstMessage === 'string').toBeTruthy();
+    });
 });
+})
+})
